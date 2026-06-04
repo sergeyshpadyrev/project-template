@@ -16,7 +16,7 @@ Deployed to npm
 
 ## Plans
 
-- Make it clients, server-core-api
+- Make it clients, core-api
 - Add prettier
 - Add perfection list
 - Add all clients
