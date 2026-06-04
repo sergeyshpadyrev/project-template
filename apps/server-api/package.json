@@ -25,6 +25,7 @@
     "@repo/config-typescript": "*",
     "@types/node": "^22.19.19",
     "eslint": "^9.39.1",
+    "ts-loader": "^9.6.0",
     "typescript": "5.9.2"
   }
 }

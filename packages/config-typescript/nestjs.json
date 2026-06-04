@@ -7,7 +7,6 @@
     "isolatedModules": false,
     "lib": ["es2022"],
     "outDir": "${configDir}/dist",
-    "rootDir": "${configDir}/src",
     "sourceMap": true,
     "strictPropertyInitialization": false
   }
