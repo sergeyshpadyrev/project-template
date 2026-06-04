@@ -2,7 +2,7 @@ import {
   createExecutor,
   ExecutionRequest,
   ExecutionResponse,
-} from "typed-remote-procedure-call";
+} from "@repo/utils-rpc";
 import { Injectable } from "@nestjs/common";
 import { ClientServerInterface, Project, Task } from "@repo/core-types";
 

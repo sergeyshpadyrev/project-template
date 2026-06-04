@@ -1,6 +1,6 @@
 import { ClientServerInterface } from "@repo/core-types";
 
-import { createRPC, ExecutionRequest } from "typed-remote-procedure-call";
+import { createRPC, ExecutionRequest } from "@repo/utils-rpc";
 
 const rpc = createRPC<ClientServerInterface>({
   send: async (request: ExecutionRequest) => {
