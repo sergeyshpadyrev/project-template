@@ -1,12 +1,5 @@
 {
-  "extends": "@repo/config-typescript/base.json",
-  "compilerOptions": {
-    "outDir": "dist",
-    "experimentalDecorators": true,
-    "emitDecoratorMetadata": true,
-    "isolatedModules": false,
-    "strictPropertyInitialization": false
-  },
+  "extends": "@repo/config-typescript/nestjs.json",
   "include": ["src"],
   "exclude": ["node_modules", "dist"]
 }

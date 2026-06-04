@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true,
+    "isolatedModules": false,
+    "lib": ["es2022"],
+    "outDir": "${configDir}/dist",
+    "rootDir": "${configDir}/src",
+    "sourceMap": true,
+    "strictPropertyInitialization": false
+  }
+}

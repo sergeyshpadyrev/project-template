@@ -7,6 +7,11 @@ import { Project } from "@repo/core-types";
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
+  @Get("/health")
+  healthCheck(): string {
+    return "OK";
+  }
+
   @Get("/projects")
   getProjects(): Promise<Project[]> {
     return this.appService.getProjects();
