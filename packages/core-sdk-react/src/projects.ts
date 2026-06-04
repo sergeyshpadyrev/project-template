@@ -43,8 +43,8 @@ const useDeleteProject = () => {
 };
 
 export default {
-  useList: useProjects,
   useCreate: useCreateProject,
-  useUpdate: useUpdateProject,
   useDelete: useDeleteProject,
+  useList: useProjects,
+  useUpdate: useUpdateProject,
 };

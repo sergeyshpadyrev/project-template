@@ -6,13 +6,13 @@ import rpc from "@repo/core-sdk";
 
 import { queryKeys } from "./queryKeys";
 
-export const useTasks = (projectId: string) =>
+const useTasks = (projectId: string) =>
   useQuery({
     queryKey: queryKeys.projectTasks(projectId),
     queryFn: () => rpc.call.getTasks({ projectId }),
   });
 
-export const useCreateTask = () => {
+const useCreateTask = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (input: { projectId: string; task: Omit<Task, "id"> }) =>
@@ -27,13 +27,11 @@ export const useCreateTask = () => {
   });
 };
 
-export const useUpdateTask = () => {
+const useUpdateTask = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: {
-      taskId: string;
-      task: Partial<Omit<Task, "id">>;
-    }) => rpc.call.updateTask(input),
+    mutationFn: (input: { taskId: string; task: Partial<Omit<Task, "id">> }) =>
+      rpc.call.updateTask(input),
     onSuccess: () =>
       Promise.all([
         queryClient.invalidateQueries({ queryKey: queryKeys.tasks }),
@@ -42,7 +40,7 @@ export const useUpdateTask = () => {
   });
 };
 
-export const useDeleteTask = () => {
+const useDeleteTask = () => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (input: { taskId: string }) => rpc.call.deleteTask(input),
@@ -52,4 +50,11 @@ export const useDeleteTask = () => {
         queryClient.invalidateQueries({ queryKey: queryKeys.projects }),
       ]),
   });
+};
+
+export default {
+  useCreate: useCreateTask,
+  useDelete: useDeleteTask,
+  useList: useTasks,
+  useUpdate: useUpdateTask,
 };
