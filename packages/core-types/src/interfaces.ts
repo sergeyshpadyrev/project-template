@@ -8,7 +8,7 @@ export type ClientServerInterface = {
   }): Promise<Task>;
   deleteProject(input: { projectId: string }): Promise<void>;
   deleteTask(input: { taskId: string }): Promise<void>;
-  getProjects(input: {}): Promise<Project[]>;
+  getProjects(): Promise<Project[]>;
   getTasks(input: { projectId: string }): Promise<Task[]>;
   updateProject(input: { projectId: string; name: string }): Promise<Project>;
   updateTask(input: {

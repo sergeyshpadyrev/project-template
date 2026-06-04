@@ -8,3 +8,5 @@ const rpc = createRPC<ClientServerInterface>({
     return null as any;
   },
 });
+
+export default rpc;
