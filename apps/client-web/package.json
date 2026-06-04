@@ -11,7 +11,8 @@
     "check-types": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/core-sdk": "*",
+    "@repo/core-sdk-react": "*",
+    "@repo/core-types": "*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
