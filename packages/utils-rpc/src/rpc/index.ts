@@ -69,3 +69,5 @@ export const createRPC = <API extends OperationAPI>(
     chain,
   };
 };
+
+export type { OperationCallerProps, OperationChainEngine } from "./types";
