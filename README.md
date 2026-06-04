@@ -16,10 +16,16 @@ Deployed to npm
 
 ## Plans
 
-- Make it clients, core-api
 - Add prettier
 - Add perfection list
+- Add utils/rcs for React component structure
 - Add all clients
+- Add docker compose
+- Add database
+- Add prisma
+- Add CI/CD
+- Add multiconfig for all environments
+- Add libs/config-env
 - Deploy apps
 - Deploy npm package
 - Add docs app
