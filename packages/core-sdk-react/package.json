@@ -1,0 +1,29 @@
+{
+  "name": "@repo/core-sdk-react",
+  "version": "0.0.0",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts",
+    "./*": "./src/*.ts"
+  },
+  "scripts": {
+    "lint": "eslint . --max-warnings 0",
+    "check-types": "tsc --noEmit"
+  },
+  "dependencies": {
+    "@repo/core-sdk": "*",
+    "@repo/core-types": "*",
+    "@tanstack/react-query": "^5.101.0"
+  },
+  "peerDependencies": {
+    "react": "^19.2.0"
+  },
+  "devDependencies": {
+    "@repo/config-eslint": "*",
+    "@repo/config-typescript": "*",
+    "@types/react": "19.2.2",
+    "eslint": "^9.39.1",
+    "react": "^19.2.0",
+    "typescript": "5.9.2"
+  }
+}
