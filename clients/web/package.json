@@ -4,11 +4,12 @@
   "type": "module",
   "private": true,
   "scripts": {
-    "dev": "vite",
     "build": "vite build",
-    "preview": "vite preview",
-    "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "check:lint": "eslint . --max-warnings 0",
+    "check:lint:fix": "eslint . --fix",
+    "check:types": "tsc --noEmit",
+    "dev": "vite",
+    "preview": "vite preview"
   },
   "dependencies": {
     "@repo/core-sdk-react": "*",

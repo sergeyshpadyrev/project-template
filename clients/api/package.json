@@ -3,11 +3,12 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "dev": "nest start --watch",
     "build": "nest build",
-    "start": "node dist/main.js",
-    "lint": "eslint . --max-warnings 0",
-    "check-types": "tsc --noEmit"
+    "check:lint": "eslint . --max-warnings 0",
+    "check:lint:fix": "eslint . --fix",
+    "check:types": "tsc --noEmit",
+    "dev": "nest start --watch",
+    "start": "node dist/main.js"
   },
   "dependencies": {
     "@nestjs/common": "^11.0.0",

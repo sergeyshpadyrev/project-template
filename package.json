@@ -6,9 +6,9 @@
     "dev": "turbo run dev",
     "check:format": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,md}\"",
     "check:format:fix": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,md}\"",
-    "check:lint": "turbo run lint",
-    "check:lint:fix": "turbo run lint:fix",
-    "check:types": "turbo run check-types"
+    "check:lint": "turbo run check:lint",
+    "check:lint:fix": "turbo run check:lint:fix",
+    "check:types": "turbo run check:types"
   },
   "devDependencies": {
     "@repo/config-prettier": "*",
