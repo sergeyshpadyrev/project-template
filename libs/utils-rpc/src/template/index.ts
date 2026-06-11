@@ -1,6 +1,6 @@
 import { OperationAPI } from '../operation';
-import { OperationTemplate, OperationTemplateEngine, OperationTemplateJSON } from './types';
 import { reference, ReferenceExtractor } from '../reference';
+import { OperationTemplate, OperationTemplateEngine, OperationTemplateJSON } from './types';
 
 export const templateReferencePrefix = '$$_ref$$_';
 
@@ -35,7 +35,7 @@ export const createTemplateEngine = <API extends OperationAPI>() =>
         {
             get: (_target, name) => {
                 if (typeof name === 'string') {
-                    return (input: any) => createTemplate([{ name, input: processReferences(input) }]);
+                    return (input: any) => createTemplate([{ input: processReferences(input), name }]);
                 }
             },
         },

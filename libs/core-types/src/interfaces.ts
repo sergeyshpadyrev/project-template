@@ -10,9 +10,9 @@ export type ClientServerInterface = {
   deleteTask(input: { taskId: string }): Promise<void>;
   getProjects(): Promise<Project[]>;
   getTasks(input: { projectId: string }): Promise<Task[]>;
-  updateProject(input: { projectId: string; name: string }): Promise<Project>;
+  updateProject(input: { name: string; projectId: string; }): Promise<Project>;
   updateTask(input: {
-    taskId: string;
     task: Partial<Omit<Task, "id">>;
+    taskId: string;
   }): Promise<Task>;
 };

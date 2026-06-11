@@ -1,17 +1,15 @@
+import { Injectable } from "@nestjs/common";
+import { ClientServerInterface, Project, Task } from "@repo/core-types";
 import {
   createExecutor,
   ExecutionRequest,
   ExecutionResponse,
 } from "@repo/utils-rpc";
-import { Injectable } from "@nestjs/common";
-import { ClientServerInterface, Project, Task } from "@repo/core-types";
 
 import { DatabaseService } from "./database.service";
 
 @Injectable()
 export class AppService {
-  constructor(private readonly database: DatabaseService) {}
-
   private executor = createExecutor<ClientServerInterface>({
     createProject: (input: { name: string }): Promise<Project> =>
       this.database.createProject(input),
@@ -27,14 +25,16 @@ export class AppService {
     getTasks: (input: { projectId: string }): Promise<Task[]> =>
       this.database.getTasks(input),
     updateProject: (input: {
-      projectId: string;
       name: string;
+      projectId: string;
     }): Promise<Project> => this.database.updateProject(input),
     updateTask: (input: {
-      taskId: string;
       task: Partial<Omit<Task, "id">>;
+      taskId: string;
     }): Promise<Task> => this.database.updateTask(input),
   });
+
+  constructor(private readonly database: DatabaseService) {}
 
   async handleRequestFromCallerSide(
     request: ExecutionRequest,

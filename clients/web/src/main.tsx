@@ -1,7 +1,6 @@
+import { QueryClient, QueryClientProvider } from "@repo/core-sdk-react";
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
-
-import { QueryClient, QueryClientProvider } from "@repo/core-sdk-react";
 
 import { App } from "./App";
 

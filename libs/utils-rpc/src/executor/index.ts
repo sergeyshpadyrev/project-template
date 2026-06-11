@@ -1,6 +1,6 @@
-import { ExecutionRequest, ExecutionResponse, Executor } from "./types";
 import { OperationAPI } from "../operation";
 import { templateReferencePrefix } from "../template";
+import { ExecutionRequest, ExecutionResponse, Executor } from "./types";
 
 export const createExecutor = <API extends OperationAPI>(
   operations: API,

@@ -1,8 +1,6 @@
-import { useState } from "react";
-
-import { Task } from "@repo/core-types";
-
 import sdk from "@repo/core-sdk-react";
+import { Task } from "@repo/core-types";
+import { useState } from "react";
 
 const statusOrder: Task["status"][] = ["todo", "in-progress", "done"];
 
@@ -10,8 +8,8 @@ const nextStatus = (status: Task["status"]): Task["status"] =>
   statusOrder[(statusOrder.indexOf(status) + 1) % statusOrder.length];
 
 const ProjectList = (props: {
-  selectedProjectId: string | null;
-  onSelect: (projectId: string | null) => void;
+  onSelect: (projectId: null | string) => void;
+  selectedProjectId: null | string;
 }) => {
   const [name, setName] = useState("");
 
@@ -40,11 +38,11 @@ const ProjectList = (props: {
       <h2>Projects</h2>
       <form onSubmit={handleCreate}>
         <input
+          onChange={(event) => setName(event.target.value)}
           placeholder="New project name"
           value={name}
-          onChange={(event) => setName(event.target.value)}
         />
-        <button type="submit" disabled={createProject.isPending}>
+        <button disabled={createProject.isPending} type="submit">
           Add
         </button>
       </form>
@@ -61,8 +59,8 @@ const ProjectList = (props: {
               {project.name} ({project.tasks.length})
             </button>
             <button
-              onClick={() => handleDelete(project.id)}
               disabled={deleteProject.isPending}
+              onClick={() => handleDelete(project.id)}
             >
               ✕
             </button>
@@ -87,7 +85,7 @@ const TaskList = (props: { projectId: string }) => {
     if (!trimmed) return;
     createTask.mutate({
       projectId: props.projectId,
-      task: { name: trimmed, description: "", status: "todo" },
+      task: { description: "", name: trimmed, status: "todo" },
     });
     setName("");
   };
@@ -100,11 +98,11 @@ const TaskList = (props: { projectId: string }) => {
       <h2>Tasks</h2>
       <form onSubmit={handleCreate}>
         <input
+          onChange={(event) => setName(event.target.value)}
           placeholder="New task name"
           value={name}
-          onChange={(event) => setName(event.target.value)}
         />
-        <button type="submit" disabled={createTask.isPending}>
+        <button disabled={createTask.isPending} type="submit">
           Add
         </button>
       </form>
@@ -120,19 +118,19 @@ const TaskList = (props: { projectId: string }) => {
               {task.name}
             </span>
             <button
+              disabled={updateTask.isPending}
               onClick={() =>
                 updateTask.mutate({
-                  taskId: task.id,
                   task: { status: nextStatus(task.status) },
+                  taskId: task.id,
                 })
               }
-              disabled={updateTask.isPending}
             >
               {task.status}
             </button>
             <button
-              onClick={() => deleteTask.mutate({ taskId: task.id })}
               disabled={deleteTask.isPending}
+              onClick={() => deleteTask.mutate({ taskId: task.id })}
             >
               ✕
             </button>
@@ -144,7 +142,7 @@ const TaskList = (props: { projectId: string }) => {
 };
 
 export const App = () => {
-  const [selectedProjectId, setSelectedProjectId] = useState<string | null>(
+  const [selectedProjectId, setSelectedProjectId] = useState<null | string>(
     null,
   );
 
@@ -152,8 +150,8 @@ export const App = () => {
     <main>
       <h1>Todo</h1>
       <ProjectList
-        selectedProjectId={selectedProjectId}
         onSelect={setSelectedProjectId}
+        selectedProjectId={selectedProjectId}
       />
       {selectedProjectId ? (
         <TaskList projectId={selectedProjectId} />

@@ -1,15 +1,13 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-
-import { Task } from "@repo/core-types";
-
 import rpc from "@repo/core-sdk";
+import { Task } from "@repo/core-types";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { queryKeys } from "./queryKeys";
 
 const useTasks = (projectId: string) =>
   useQuery({
-    queryKey: queryKeys.projectTasks(projectId),
     queryFn: () => rpc.call.getTasks({ projectId }),
+    queryKey: queryKeys.projectTasks(projectId),
   });
 
 const useCreateTask = () => {
@@ -30,7 +28,7 @@ const useCreateTask = () => {
 const useUpdateTask = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: { taskId: string; task: Partial<Omit<Task, "id">> }) =>
+    mutationFn: (input: { task: Partial<Omit<Task, "id">>; taskId: string; }) =>
       rpc.call.updateTask(input),
     onSuccess: () =>
       Promise.all([

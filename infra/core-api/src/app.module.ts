@@ -5,8 +5,8 @@ import { AppService } from "./app.service";
 import { DatabaseService } from "./database.service";
 
 @Module({
-  imports: [],
   controllers: [AppController],
+  imports: [],
   providers: [AppService, DatabaseService],
 })
 export class AppModule {}

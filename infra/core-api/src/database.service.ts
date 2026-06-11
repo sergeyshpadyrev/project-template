@@ -47,8 +47,8 @@ export class DatabaseService {
   }
 
   async updateProject(input: {
-    projectId: string;
     name: string;
+    projectId: string;
   }): Promise<Project> {
     const project = this.findProject(input.projectId);
     project.name = input.name;
@@ -56,8 +56,8 @@ export class DatabaseService {
   }
 
   async updateTask(input: {
-    taskId: string;
     task: Partial<Omit<Task, "id">>;
+    taskId: string;
   }): Promise<Task> {
     const project = this.findProjectByTaskId(input.taskId);
     const task = project.tasks.find((task) => task.id === input.taskId)!;

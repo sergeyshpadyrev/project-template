@@ -1,5 +1,4 @@
 import { ClientServerInterface } from "@repo/core-types";
-
 import {
   createRPC,
   ExecutionRequest,
@@ -9,11 +8,11 @@ import {
 const rpc = createRPC<ClientServerInterface>({
   send: async (request: ExecutionRequest) => {
     const response = await fetch("http://localhost:4001/rpc", {
-      method: "POST",
+      body: JSON.stringify({ request }),
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ request }),
+      method: "POST",
     });
     return (await response.json()) as ExecutionResponse;
   },

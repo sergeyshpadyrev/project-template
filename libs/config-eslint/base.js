@@ -31,15 +31,5 @@ export const config = [
   {
     ignores: ["dist/**"],
   },
-  {
-    plugins: {
-      perfectionist,
-    },
-    settings: {
-      perfectionist: {
-        type: "natural",
-        fallbackSort: "line-length",
-      },
-    },
-  },
+  perfectionist.configs["recommended-natural"],
 ];

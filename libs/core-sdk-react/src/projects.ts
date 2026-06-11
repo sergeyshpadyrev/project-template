@@ -1,13 +1,12 @@
-import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
-
 import rpc from "@repo/core-sdk";
+import { useMutation, useQuery, useQueryClient } from "@tanstack/react-query";
 
 import { queryKeys } from "./queryKeys";
 
 const useProjects = () =>
   useQuery({
-    queryKey: queryKeys.projects,
     queryFn: () => rpc.call.getProjects(),
+    queryKey: queryKeys.projects,
   });
 
 const useCreateProject = () => {
@@ -22,7 +21,7 @@ const useCreateProject = () => {
 const useUpdateProject = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: { projectId: string; name: string }) =>
+    mutationFn: (input: { name: string; projectId: string; }) =>
       rpc.call.updateProject(input),
     onSuccess: () =>
       queryClient.invalidateQueries({ queryKey: queryKeys.projects }),

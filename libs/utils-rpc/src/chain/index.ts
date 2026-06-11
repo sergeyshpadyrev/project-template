@@ -1,6 +1,6 @@
 import { OperationAPI } from '../operation';
-import { OperationTemplate, templateReferencePrefix } from '../template';
 import { reference, Reference, ReferenceExtractor } from '../reference';
+import { OperationTemplate, templateReferencePrefix } from '../template';
 
 export const chainOperation =
     <API extends OperationAPI, FirstInput, LastOutput>(

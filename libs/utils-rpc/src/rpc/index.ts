@@ -1,9 +1,9 @@
 import { chain as chainFn } from "../chain";
-import { createTemplateEngine, OperationTemplate } from "../template";
 import { ExecutionRequest } from "../executor";
 import { OperationAPI } from "../operation";
-import { OperationCallerProps, OperationChainEngine } from "./types";
 import { ReferenceExtractor } from "../reference";
+import { createTemplateEngine, OperationTemplate } from "../template";
+import { OperationCallerProps, OperationChainEngine } from "./types";
 
 export const createRPC = <API extends OperationAPI>(
   props: OperationCallerProps,
