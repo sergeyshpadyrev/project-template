@@ -1,6 +1,10 @@
 import { ClientServerInterface } from "@repo/core-types";
 
-import { createRPC, ExecutionRequest, ExecutionResponse } from "@repo/utils-rpc";
+import {
+  createRPC,
+  ExecutionRequest,
+  ExecutionResponse,
+} from "@repo/utils-rpc";
 
 const rpc = createRPC<ClientServerInterface>({
   send: async (request: ExecutionRequest) => {
