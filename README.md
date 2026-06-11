@@ -16,8 +16,6 @@ Deployed to npm
 
 ## Plans
 
-- Add prettier
-- Add perfection list
 - Add utils/rcs for React component structure
 - Add all clients
 - Add docker compose

@@ -21,7 +21,8 @@
   "packageManager": "npm@10.9.2",
   "workspaces": [
     "clients/*",
-    "infra/*",
+    "configs/*",
+    "core/*",
     "libs/*"
   ]
 }
