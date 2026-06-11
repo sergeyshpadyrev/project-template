@@ -1,3 +1,5 @@
+import perfectionist from "eslint-plugin-perfectionist";
+
 import js from "@eslint/js";
 import eslintConfigPrettier from "eslint-config-prettier";
 import turboPlugin from "eslint-plugin-turbo";
@@ -28,5 +30,16 @@ export const config = [
   },
   {
     ignores: ["dist/**"],
+  },
+  {
+    plugins: {
+      perfectionist,
+    },
+    settings: {
+      perfectionist: {
+        type: "natural",
+        fallbackSort: "line-length",
+      },
+    },
   },
 ];
