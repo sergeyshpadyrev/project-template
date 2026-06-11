@@ -1,17 +1,17 @@
-import sdk from "@repo/core-sdk-react";
-import { Task } from "@repo/core-types";
-import { useState } from "react";
+import sdk from '@repo/core-sdk-react';
+import { Task } from '@repo/core-types';
+import { useState } from 'react';
 
-const statusOrder: Task["status"][] = ["todo", "in-progress", "done"];
+const statusOrder: Task['status'][] = ['todo', 'in-progress', 'done'];
 
-const nextStatus = (status: Task["status"]): Task["status"] =>
+const nextStatus = (status: Task['status']): Task['status'] =>
   statusOrder[(statusOrder.indexOf(status) + 1) % statusOrder.length];
 
 const ProjectList = (props: {
   onSelect: (projectId: null | string) => void;
   selectedProjectId: null | string;
 }) => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
   const projects = sdk.projects.useList();
   const createProject = sdk.projects.useCreate();
@@ -22,7 +22,7 @@ const ProjectList = (props: {
     const trimmed = name.trim();
     if (!trimmed) return;
     createProject.mutate({ name: trimmed });
-    setName("");
+    setName('');
   };
 
   const handleDelete = (projectId: string) => {
@@ -52,16 +52,12 @@ const ProjectList = (props: {
             <button
               onClick={() => props.onSelect(project.id)}
               style={{
-                fontWeight:
-                  project.id === props.selectedProjectId ? "bold" : "normal",
+                fontWeight: project.id === props.selectedProjectId ? 'bold' : 'normal',
               }}
             >
               {project.name} ({project.tasks.length})
             </button>
-            <button
-              disabled={deleteProject.isPending}
-              onClick={() => handleDelete(project.id)}
-            >
+            <button disabled={deleteProject.isPending} onClick={() => handleDelete(project.id)}>
               ✕
             </button>
           </li>
@@ -72,7 +68,7 @@ const ProjectList = (props: {
 };
 
 const TaskList = (props: { projectId: string }) => {
-  const [name, setName] = useState("");
+  const [name, setName] = useState('');
 
   const tasks = sdk.tasks.useList(props.projectId);
   const createTask = sdk.tasks.useCreate();
@@ -85,9 +81,9 @@ const TaskList = (props: { projectId: string }) => {
     if (!trimmed) return;
     createTask.mutate({
       projectId: props.projectId,
-      task: { description: "", name: trimmed, status: "todo" },
+      task: { description: '', name: trimmed, status: 'todo' },
     });
-    setName("");
+    setName('');
   };
 
   if (tasks.isPending) return <p>Loading tasks…</p>;
@@ -111,8 +107,7 @@ const TaskList = (props: { projectId: string }) => {
           <li key={task.id}>
             <span
               style={{
-                textDecoration:
-                  task.status === "done" ? "line-through" : "none",
+                textDecoration: task.status === 'done' ? 'line-through' : 'none',
               }}
             >
               {task.name}
@@ -142,17 +137,12 @@ const TaskList = (props: { projectId: string }) => {
 };
 
 export const App = () => {
-  const [selectedProjectId, setSelectedProjectId] = useState<null | string>(
-    null,
-  );
+  const [selectedProjectId, setSelectedProjectId] = useState<null | string>(null);
 
   return (
     <main>
       <h1>Todo</h1>
-      <ProjectList
-        onSelect={setSelectedProjectId}
-        selectedProjectId={selectedProjectId}
-      />
+      <ProjectList onSelect={setSelectedProjectId} selectedProjectId={selectedProjectId} />
       {selectedProjectId ? (
         <TaskList projectId={selectedProjectId} />
       ) : (

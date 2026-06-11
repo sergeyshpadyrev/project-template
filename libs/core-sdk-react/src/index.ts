@@ -1,7 +1,7 @@
-export { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+export { QueryClient, QueryClientProvider } from '@tanstack/react-query';
 
-import projects from "./projects";
-import tasks from "./tasks";
+import projects from './projects';
+import tasks from './tasks';
 
 export default {
   projects,

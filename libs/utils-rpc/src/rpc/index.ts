@@ -1,13 +1,11 @@
-import { chain as chainFn } from "../chain";
-import { ExecutionRequest } from "../executor";
-import { OperationAPI } from "../operation";
-import { ReferenceExtractor } from "../reference";
-import { createTemplateEngine, OperationTemplate } from "../template";
-import { OperationCallerProps, OperationChainEngine } from "./types";
+import { chain as chainFn } from '../chain';
+import { ExecutionRequest } from '../executor';
+import { OperationAPI } from '../operation';
+import { ReferenceExtractor } from '../reference';
+import { createTemplateEngine, OperationTemplate } from '../template';
+import { OperationCallerProps, OperationChainEngine } from './types';
 
-export const createRPC = <API extends OperationAPI>(
-  props: OperationCallerProps,
-) => {
+export const createRPC = <API extends OperationAPI>(props: OperationCallerProps) => {
   const operations = createTemplateEngine<API>();
 
   const execute = async (request: ExecutionRequest) => {
@@ -24,43 +22,37 @@ export const createRPC = <API extends OperationAPI>(
     {},
     {
       get: (_target, prop) => {
-        if (typeof prop === "string") {
+        if (typeof prop === 'string') {
           return async (input: any) => {
             const template = operations[prop](input);
             return execute({ data: template.toJSON() });
           };
         }
       },
-    },
+    }
   ) as API;
 
   const chainOperationEngine = (
-    next: <I, O>(
-      template: OperationTemplate<API, I, O>,
-    ) => ReferenceExtractor<O>,
+    next: <I, O>(template: OperationTemplate<API, I, O>) => ReferenceExtractor<O>
   ): OperationChainEngine<API> =>
     new Proxy(
       {},
       {
         get: (_target, prop) => {
-          if (typeof prop === "string") {
+          if (typeof prop === 'string') {
             return (input: any) => {
               const template = operations[prop](input);
               return next(template);
             };
           }
         },
-      },
+      }
     ) as OperationChainEngine<API>;
 
   const chain = <LastOutput>(
-    chainer: (
-      call: OperationChainEngine<API>,
-    ) => ReferenceExtractor<LastOutput>,
+    chainer: (call: OperationChainEngine<API>) => ReferenceExtractor<LastOutput>
   ): Promise<LastOutput> => {
-    const template = chainFn<API, LastOutput>((next) =>
-      chainer(chainOperationEngine(next)),
-    );
+    const template = chainFn<API, LastOutput>((next) => chainer(chainOperationEngine(next)));
     return execute({ data: template.toJSON() });
   };
 
@@ -70,4 +62,4 @@ export const createRPC = <API extends OperationAPI>(
   };
 };
 
-export type { OperationCallerProps, OperationChainEngine } from "./types";
+export type { OperationCallerProps, OperationChainEngine } from './types';

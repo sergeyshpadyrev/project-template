@@ -8,5 +8,5 @@ export type Task = {
   description: string;
   id: string;
   name: string;
-  status: "done" | "in-progress" | "todo";
+  status: 'done' | 'in-progress' | 'todo';
 };

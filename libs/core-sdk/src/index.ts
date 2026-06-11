@@ -1,18 +1,14 @@
-import { ClientServerInterface } from "@repo/core-types";
-import {
-  createRPC,
-  ExecutionRequest,
-  ExecutionResponse,
-} from "@repo/utils-rpc";
+import { ClientServerInterface } from '@repo/core-types';
+import { createRPC, ExecutionRequest, ExecutionResponse } from '@repo/utils-rpc';
 
 const rpc = createRPC<ClientServerInterface>({
   send: async (request: ExecutionRequest) => {
-    const response = await fetch("http://localhost:4001/rpc", {
+    const response = await fetch('http://localhost:4001/rpc', {
       body: JSON.stringify({ request }),
       headers: {
-        "Content-Type": "application/json",
+        'Content-Type': 'application/json',
       },
-      method: "POST",
+      method: 'POST',
     });
     return (await response.json()) as ExecutionResponse;
   },

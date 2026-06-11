@@ -4,14 +4,13 @@
   "scripts": {
     "build": "turbo run build",
     "dev": "turbo run dev",
-    "check:format": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,md}\"",
-    "check:format:fix": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,md}\"",
+    "check:format": "turbo run check:format",
+    "check:format:fix": "turbo run check:format:fix",
     "check:lint": "turbo run check:lint",
     "check:lint:fix": "turbo run check:lint:fix",
     "check:types": "turbo run check:types"
   },
   "devDependencies": {
-    "@repo/config-prettier": "*",
     "prettier": "^3.8.3",
     "turbo": "^2.9.16",
     "typescript": "5.9.2"

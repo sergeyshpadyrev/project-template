@@ -1,19 +1,19 @@
-import { Controller, Get } from "@nestjs/common";
-import { Project } from "@repo/core-types";
+import { Controller, Get } from '@nestjs/common';
+import { Project } from '@repo/core-types';
 
-import { AppService } from "./app.service";
+import { AppService } from './app.service';
 
 @Controller()
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get("/projects")
+  @Get('/projects')
   getProjects(): Promise<Project[]> {
     return this.appService.getProjects();
   }
 
-  @Get("/health")
+  @Get('/health')
   healthCheck(): string {
-    return "OK";
+    return 'OK';
   }
 }

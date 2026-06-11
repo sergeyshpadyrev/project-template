@@ -1,14 +1,14 @@
 import { OperationTemplateJSON } from '../template';
 
 export type ExecutionRequest = {
-    data: OperationTemplateJSON<any>;
+  data: OperationTemplateJSON<any>;
 };
 
 export type ExecutionResponse = {
-    data?: any[];
-    error?: string;
+  data?: any[];
+  error?: string;
 };
 
 export type Executor = {
-    execute: (request: ExecutionRequest) => Promise<ExecutionResponse>;
+  execute: (request: ExecutionRequest) => Promise<ExecutionResponse>;
 };

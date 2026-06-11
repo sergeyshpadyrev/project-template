@@ -1,6 +1,6 @@
-import { Injectable, NotFoundException } from "@nestjs/common";
-import { Project, Task } from "@repo/core-types";
-import { randomUUID } from "crypto";
+import { Injectable, NotFoundException } from '@nestjs/common';
+import { Project, Task } from '@repo/core-types';
+import { randomUUID } from 'crypto';
 
 @Injectable()
 export class DatabaseService {
@@ -16,10 +16,7 @@ export class DatabaseService {
     return project;
   }
 
-  async createTask(input: {
-    projectId: string;
-    task: Omit<Task, "id">;
-  }): Promise<Task> {
+  async createTask(input: { projectId: string; task: Omit<Task, 'id'> }): Promise<Task> {
     const project = this.findProject(input.projectId);
     const task: Task = { id: randomUUID(), ...input.task };
     project.tasks.push(task);
@@ -28,9 +25,7 @@ export class DatabaseService {
 
   async deleteProject(input: { projectId: string }): Promise<void> {
     this.findProject(input.projectId);
-    this.projects = this.projects.filter(
-      (project) => project.id !== input.projectId,
-    );
+    this.projects = this.projects.filter((project) => project.id !== input.projectId);
   }
 
   async deleteTask(input: { taskId: string }): Promise<void> {
@@ -46,19 +41,13 @@ export class DatabaseService {
     return this.findProject(input.projectId).tasks;
   }
 
-  async updateProject(input: {
-    name: string;
-    projectId: string;
-  }): Promise<Project> {
+  async updateProject(input: { name: string; projectId: string }): Promise<Project> {
     const project = this.findProject(input.projectId);
     project.name = input.name;
     return project;
   }
 
-  async updateTask(input: {
-    task: Partial<Omit<Task, "id">>;
-    taskId: string;
-  }): Promise<Task> {
+  async updateTask(input: { task: Partial<Omit<Task, 'id'>>; taskId: string }): Promise<Task> {
     const project = this.findProjectByTaskId(input.taskId);
     const task = project.tasks.find((task) => task.id === input.taskId)!;
     Object.assign(task, input.task);
@@ -67,14 +56,13 @@ export class DatabaseService {
 
   private findProject(projectId: string): Project {
     const project = this.projects.find((project) => project.id === projectId);
-    if (!project)
-      throw new NotFoundException(`Project not found: ${projectId}`);
+    if (!project) throw new NotFoundException(`Project not found: ${projectId}`);
     return project;
   }
 
   private findProjectByTaskId(taskId: string): Project {
     const project = this.projects.find((project) =>
-      project.tasks.some((task) => task.id === taskId),
+      project.tasks.some((task) => task.id === taskId)
     );
     if (!project) throw new NotFoundException(`Task not found: ${taskId}`);
     return project;
