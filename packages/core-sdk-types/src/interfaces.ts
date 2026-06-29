@@ -1,12 +1,21 @@
-import { Project, Task } from './entities';
+import { CreateProjectInput } from "./inputs/createProject";
+import { CreateTaskInput } from "./inputs/createTask";
+import { DeleteProjectInput } from "./inputs/deleteProject";
+import { DeleteTaskInput } from "./inputs/deleteTask";
+import { GetTasksInput } from "./inputs/getTasks";
+import { UpdateProjectInput } from "./inputs/updateProject";
+import { UpdateTaskInput } from "./inputs/updateTask";
+import { Project } from "./models/project";
+import { Task } from "./models/task";
+
 
 export type ClientServerInterface = {
-  createProject(input: { name: string }): Promise<Project>;
-  createTask(input: { projectId: string; task: Omit<Task, 'id'> }): Promise<Task>;
-  deleteProject(input: { projectId: string }): Promise<void>;
-  deleteTask(input: { taskId: string }): Promise<void>;
+  createProject(input: CreateProjectInput): Promise<Project>;
+  createTask(input: CreateTaskInput): Promise<Task>;
+  deleteProject(input: DeleteProjectInput): Promise<void>;
+  deleteTask(input: DeleteTaskInput): Promise<void>;
   getProjects(): Promise<Project[]>;
-  getTasks(input: { projectId: string }): Promise<Task[]>;
-  updateProject(input: { name: string; projectId: string }): Promise<Project>;
-  updateTask(input: { task: Partial<Omit<Task, 'id'>>; taskId: string }): Promise<Task>;
+  getTasks(input: GetTasksInput): Promise<Task[]>;
+  updateProject(input: UpdateProjectInput): Promise<Project>;
+  updateTask(input: UpdateTaskInput): Promise<Task>;
 };
