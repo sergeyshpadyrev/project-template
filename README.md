@@ -16,6 +16,7 @@ Deployed to npm
 
 ## Plans
 
+- Add class validator to types (models, dtos, interfaces)
 - Add all clients
 - Add docker compose
 - Add database
