@@ -1,5 +1,5 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
-import { Project, Task } from '@repo/core-types';
+import { Project, Task, UpdateTaskInput } from '@repo/core-types';
 import { randomUUID } from 'crypto';
 
 @Injectable()
@@ -16,9 +16,9 @@ export class DatabaseService {
     return project;
   }
 
-  async createTask(input: { projectId: string; task: Omit<Task, 'id'> }): Promise<Task> {
+  async createTask(input: { projectId: string  }& Omit<Task, 'id'>): Promise<Task> {
     const project = this.findProject(input.projectId);
-    const task: Task = { id: randomUUID(), ...input.task };
+    const task: Task = { id: randomUUID(), ...input  };
     project.tasks.push(task);
     return task;
   }
@@ -47,10 +47,10 @@ export class DatabaseService {
     return project;
   }
 
-  async updateTask(input: { task: Partial<Omit<Task, 'id'>>; taskId: string }): Promise<Task> {
+  async updateTask(input: UpdateTaskInput): Promise<Task> {
     const project = this.findProjectByTaskId(input.taskId);
     const task = project.tasks.find((task) => task.id === input.taskId)!;
-    Object.assign(task, input.task);
+    Object.assign(task, input);
     return task;
   }
 

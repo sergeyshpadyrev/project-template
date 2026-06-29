@@ -2,6 +2,7 @@ import rpc from '@repo/core-sdk';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { queryKeys } from './queryKeys';
+import { CreateProjectInput, DeleteProjectInput, UpdateProjectInput } from '@repo/core-types';
 
 const useProjects = () =>
   useQuery({
@@ -12,7 +13,7 @@ const useProjects = () =>
 const useCreateProject = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: { name: string }) => rpc.call.createProject(input),
+    mutationFn: (input: CreateProjectInput) => rpc.call.createProject(input),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.projects }),
   });
 };
@@ -20,7 +21,7 @@ const useCreateProject = () => {
 const useUpdateProject = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: { name: string; projectId: string }) => rpc.call.updateProject(input),
+    mutationFn: (input: UpdateProjectInput) => rpc.call.updateProject(input),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.projects }),
   });
 };
@@ -28,7 +29,7 @@ const useUpdateProject = () => {
 const useDeleteProject = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: { projectId: string }) => rpc.call.deleteProject(input),
+    mutationFn: (input: DeleteProjectInput) => rpc.call.deleteProject(input),
     onSuccess: (_data, { projectId }) => {
       queryClient.removeQueries({
         queryKey: queryKeys.projectTasks(projectId),

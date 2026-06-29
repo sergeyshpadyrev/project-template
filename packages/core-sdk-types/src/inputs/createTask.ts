@@ -1,12 +1,17 @@
 import { Type } from "class-transformer";
-import { IsString, ValidateNested } from "class-validator";
-import { Task } from "../models/task";
+import { IsEnum, IsString, ValidateNested } from "class-validator";
+import { Task, TaskStatus } from "../models/task";
 
 export class CreateTaskInput {
   @IsString()
   projectId!: string;
 
-  @ValidateNested()
-  @Type(() => Task)
-  task!: Omit<Task, 'id'>;
+  @IsString()
+  name!: string;
+
+  @IsString()
+  description!: string;
+
+  @IsEnum(TaskStatus)
+  status!: TaskStatus;
 }

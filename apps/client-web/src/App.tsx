@@ -1,8 +1,8 @@
 import sdk from '@repo/core-sdk-react';
-import { Task } from '@repo/core-types';
+import { Task, TaskStatus } from '@repo/core-types';
 import { useState } from 'react';
 
-const statusOrder: Task['status'][] = ['todo', 'in-progress', 'done'];
+const statusOrder: Task['status'][] = [TaskStatus.Todo, TaskStatus.InProgress, TaskStatus.Done];
 
 const nextStatus = (status: Task['status']): Task['status'] =>
   statusOrder[(statusOrder.indexOf(status) + 1) % statusOrder.length];
@@ -81,7 +81,9 @@ const TaskList = (props: { projectId: string }) => {
     if (!trimmed) return;
     createTask.mutate({
       projectId: props.projectId,
-      task: { description: '', name: trimmed, status: 'todo' },
+      description: '',
+      name: trimmed,
+      status: TaskStatus.Todo,
     });
     setName('');
   };
@@ -116,7 +118,7 @@ const TaskList = (props: { projectId: string }) => {
               disabled={updateTask.isPending}
               onClick={() =>
                 updateTask.mutate({
-                  task: { status: nextStatus(task.status) },
+                  status: nextStatus(task.status),
                   taskId: task.id,
                 })
               }

@@ -1,5 +1,5 @@
 import rpc from '@repo/core-sdk';
-import { Task } from '@repo/core-types';
+import { CreateTaskInput, DeleteTaskInput, Task, UpdateTaskInput } from '@repo/core-types';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { queryKeys } from './queryKeys';
@@ -13,7 +13,7 @@ const useTasks = (projectId: string) =>
 const useCreateTask = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: { projectId: string; task: Omit<Task, 'id'> }) =>
+    mutationFn: (input: CreateTaskInput) =>
       rpc.call.createTask(input),
     onSuccess: (_task, { projectId }) =>
       Promise.all([
@@ -28,7 +28,7 @@ const useCreateTask = () => {
 const useUpdateTask = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: { task: Partial<Omit<Task, 'id'>>; taskId: string }) =>
+    mutationFn: (input: UpdateTaskInput) =>
       rpc.call.updateTask(input),
     onSuccess: () =>
       Promise.all([
@@ -41,7 +41,7 @@ const useUpdateTask = () => {
 const useDeleteTask = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: { taskId: string }) => rpc.call.deleteTask(input),
+    mutationFn: (input: DeleteTaskInput) => rpc.call.deleteTask(input),
     onSuccess: () =>
       Promise.all([
         queryClient.invalidateQueries({ queryKey: queryKeys.tasks }),
