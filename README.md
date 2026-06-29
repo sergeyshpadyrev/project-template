@@ -18,9 +18,9 @@ Deployed to npm
 
 
 - Add all clients
+- Add admin application 
 - Add template-api
 - Add template-web
-- Add turbo run
 - Add docker compose
 - Add database
 - Add prisma
