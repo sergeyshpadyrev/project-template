@@ -1,5 +1,0 @@
-{
-  "extends": "@repo/config-typescript/nestjs.json",
-  "include": ["src"],
-  "exclude": ["node_modules", "dist"]
-}
