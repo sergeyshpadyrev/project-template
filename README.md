@@ -18,7 +18,6 @@ Deployed to npm
 
 
 - Add all clients
-- Add admin application 
 - Add template-api
 - Add template-web
 - Add docker compose
