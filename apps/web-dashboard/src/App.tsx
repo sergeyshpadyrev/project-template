@@ -1,5 +1,5 @@
-import sdk from '@repo/core-sdk-react';
-import { Task, TaskStatus } from '@repo/core-types';
+import sdk from '@repo/sdk-dashboard-react';
+import { Task, TaskStatus } from '@repo/types';
 import { useState } from 'react';
 
 const statusOrder: Task['status'][] = [TaskStatus.Todo, TaskStatus.InProgress, TaskStatus.Done];

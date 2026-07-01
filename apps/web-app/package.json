@@ -14,6 +14,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@repo/config-ports": "*",
     "@repo/sdk-app-react": "*",
     "@repo/types-app": "*",
     "react": "^19.2.0",

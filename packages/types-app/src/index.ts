@@ -5,8 +5,17 @@ import { DeleteTaskInput } from './dto/deleteTask';
 import { GetTasksInput } from './dto/getTasks';
 import { UpdateProjectInput } from './dto/updateProject';
 import { UpdateTaskInput } from './dto/updateTask';
-
 import { Task, Project } from '@repo/types';
+
+export {
+  CreateProjectInput,
+  CreateTaskInput,
+  DeleteProjectInput,
+  DeleteTaskInput,
+  GetTasksInput,
+  UpdateProjectInput,
+  UpdateTaskInput,
+};
 
 export type AppClientServerInterface = {
   createProject(input: CreateProjectInput): Promise<Project>;

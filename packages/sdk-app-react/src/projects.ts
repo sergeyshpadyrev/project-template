@@ -1,8 +1,8 @@
-import rpc from '@repo/core-sdk';
+import rpc from '@repo/sdk-app';
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 
 import { queryKeys } from './queryKeys';
-import { CreateProjectInput, DeleteProjectInput, UpdateProjectInput } from '@repo/core-types';
+import { CreateProjectInput, DeleteProjectInput, UpdateProjectInput } from '@repo/types-app';
 
 const useProjects = () =>
   useQuery({

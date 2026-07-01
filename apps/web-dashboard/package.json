@@ -14,7 +14,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@repo/sdk-app-react": "*",
+    "@repo/config-ports": "*",
+    "@repo/sdk-dashboard-react": "*",
     "@repo/types-dashboard": "*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
