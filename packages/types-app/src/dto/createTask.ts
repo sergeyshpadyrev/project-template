@@ -1,5 +1,5 @@
-import { TaskStatus } from "@repo/types";
-import { IsEnum, IsString } from "class-validator";
+import { TaskStatus } from '@repo/types';
+import { IsEnum, IsString } from 'class-validator';
 
 export class CreateTaskInput {
   @IsString()

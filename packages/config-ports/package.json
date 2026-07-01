@@ -1,22 +1,22 @@
 {
-  "name": "@repo/config-ports",
-  "version": "0.0.0",
-  "private": true,
-  "exports": {
-    ".": "./index.ts"
-  },
-  "scripts": {
-    "check:format": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,md}\"",
-    "check:format:fix": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,md}\"",
-    "check:lint": "eslint . --max-warnings 0",
-    "check:lint:fix": "eslint . --fix",
-    "check:types": "tsc --noEmit"
-  },
-  "devDependencies": {
-    "@repo/config-eslint": "*",
-    "@repo/config-typescript": "*",
-    "@types/node": "^22.15.3",
-    "eslint": "^9.39.1",
-    "typescript": "5.9.2"
-  }
+    "name": "@repo/config-ports",
+    "version": "0.0.0",
+    "private": true,
+    "exports": {
+        ".": "./index.ts"
+    },
+    "scripts": {
+        "check:format": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,md}\"",
+        "check:format:fix": "prettier --write \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,md}\"",
+        "check:lint": "eslint . --max-warnings 0",
+        "check:lint:fix": "eslint . --fix",
+        "check:types": "tsc --noEmit"
+    },
+    "devDependencies": {
+        "@repo/config-eslint": "*",
+        "@repo/config-typescript": "*",
+        "@types/node": "^22.15.3",
+        "eslint": "^9.39.1",
+        "typescript": "5.9.2"
+    }
 }

@@ -40,11 +40,7 @@ export const App = () => {
         {users?.map((user) => (
           <li key={user.id}>
             <button
-              onClick={() =>
-                setSelectedUserId((current) =>
-                  current === user.id ? null : user.id
-                )
-              }
+              onClick={() => setSelectedUserId((current) => (current === user.id ? null : user.id))}
               type="button"
             >
               {user.name}

@@ -1,24 +1,21 @@
-import {
-    IsEnum,
-    IsString,
-} from 'class-validator';
+import { IsEnum, IsString } from 'class-validator';
 
 export enum TaskStatus {
-    Done = 'done',
-    InProgress = 'in-progress',
-    Todo = 'todo',
+  Done = 'done',
+  InProgress = 'in-progress',
+  Todo = 'todo',
 }
 
 export class Task {
-    @IsString()
-    description!: string;
+  @IsString()
+  description!: string;
 
-    @IsString()
-    id!: string;
+  @IsString()
+  id!: string;
 
-    @IsString()
-    name!: string;
+  @IsString()
+  name!: string;
 
-    @IsEnum(TaskStatus)
-    status!: TaskStatus;
+  @IsEnum(TaskStatus)
+  status!: TaskStatus;
 }

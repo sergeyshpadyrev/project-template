@@ -16,6 +16,6 @@ const useUserProjects = (userId: string) =>
   });
 
 export default {
-  useUsers,
   useUserProjects,
+  useUsers,
 };
