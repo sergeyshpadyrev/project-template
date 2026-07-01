@@ -2,8 +2,8 @@ import { IsString } from "class-validator";
 
 export class UpdateProjectInput {
   @IsString()
-  projectId!: string;
+  name!: string;
 
   @IsString()
-  name!: string;
+  projectId!: string;
 }

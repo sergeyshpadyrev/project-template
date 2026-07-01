@@ -11,13 +11,13 @@ export enum TaskStatus {
 
 export class Task {
     @IsString()
+    description!: string;
+
+    @IsString()
     id!: string;
 
     @IsString()
     name!: string;
-
-    @IsString()
-    description!: string;
 
     @IsEnum(TaskStatus)
     status!: TaskStatus;

@@ -80,9 +80,9 @@ const TaskList = (props: { projectId: string }) => {
     const trimmed = name.trim();
     if (!trimmed) return;
     createTask.mutate({
-      projectId: props.projectId,
       description: '',
       name: trimmed,
+      projectId: props.projectId,
       status: TaskStatus.Todo,
     });
     setName('');

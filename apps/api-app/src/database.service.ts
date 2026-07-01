@@ -17,7 +17,7 @@ export class DatabaseService {
     return project;
   }
 
-  async createTask(input: { projectId: string } & Omit<Task, 'id'>): Promise<Task> {
+  async createTask(input: Omit<Task, 'id'> & { projectId: string }): Promise<Task> {
     const project = this.findProject(input.projectId);
     const task: Task = { id: randomUUID(), ...input };
     project.tasks.push(task);

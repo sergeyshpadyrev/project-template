@@ -1,10 +1,10 @@
 import { Injectable } from '@nestjs/common';
 import { ClientServerInterface, CreateProjectInput, CreateTaskInput, DeleteProjectInput, DeleteTaskInput, GetTasksInput, Project, Task, UpdateProjectInput, UpdateTaskInput } from '@repo/core-types';
 import { createExecutor, ExecutionRequest, ExecutionResponse } from '@repo/utils-rpc';
-
-import { DatabaseService } from './database.service';
 import { ClassConstructor, plainToInstance } from 'class-transformer';
 import { validateOrReject } from 'class-validator';
+
+import { DatabaseService } from './database.service';
 
 @Injectable()
 export class AppService {
@@ -21,6 +21,10 @@ export class AppService {
 
   constructor(private readonly database: DatabaseService) {}
 
+  async handleRequestFromCallerSide(request: ExecutionRequest): Promise<ExecutionResponse> {
+    return this.executor.execute(request);
+  }
+
   private withValidation<I, O>(inputClass: ClassConstructor<I>, handle: (i: I) => O) {
     return (input: I) => {
 
@@ -33,9 +37,5 @@ export class AppService {
       
       return handle(input)
     };
-  }
-
-  async handleRequestFromCallerSide(request: ExecutionRequest): Promise<ExecutionResponse> {
-    return this.executor.execute(request);
   }
 }

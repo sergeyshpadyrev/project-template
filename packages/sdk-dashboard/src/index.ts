@@ -1,6 +1,6 @@
-import { createRPC, ExecutionRequest, ExecutionResponse } from '@repo/utils-rpc';
-import { DashboardClientServerInterface } from '@repo/types-dashboard';
 import ports from '@repo/config-ports';
+import { DashboardClientServerInterface } from '@repo/types-dashboard';
+import { createRPC, ExecutionRequest, ExecutionResponse } from '@repo/utils-rpc';
 
 const rpc = createRPC<DashboardClientServerInterface>({
   send: async (request: ExecutionRequest) => {

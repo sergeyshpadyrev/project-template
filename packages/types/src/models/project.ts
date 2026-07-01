@@ -4,6 +4,7 @@ import {
     IsString,
     ValidateNested,
 } from 'class-validator';
+
 import { Task } from './task';
 
 export class Project {
@@ -14,7 +15,7 @@ export class Project {
     name!: string;
 
     @IsArray()
-    @ValidateNested({ each: true })
     @Type(() => Task)
+    @ValidateNested({ each: true })
     tasks!: Task[];
 }

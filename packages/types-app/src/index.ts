@@ -1,3 +1,5 @@
+import { Project, Task } from '@repo/types';
+
 import { CreateProjectInput } from './dto/createProject';
 import { CreateTaskInput } from './dto/createTask';
 import { DeleteProjectInput } from './dto/deleteProject';
@@ -5,7 +7,6 @@ import { DeleteTaskInput } from './dto/deleteTask';
 import { GetTasksInput } from './dto/getTasks';
 import { UpdateProjectInput } from './dto/updateProject';
 import { UpdateTaskInput } from './dto/updateTask';
-import { Task, Project } from '@repo/types';
 
 export {
   CreateProjectInput,

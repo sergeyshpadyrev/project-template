@@ -1,21 +1,19 @@
-import { IsOptional, IsString } from "class-validator";
-import { Task } from "../models/task";
-
+import { Task } from '@repo/types';
+import { IsOptional, IsString } from 'class-validator';
 
 export class UpdateTaskInput {
-  @IsString()
-  taskId!: string;
-
-   @IsOptional()
-  @IsString()
-  name?: string;
-
   @IsOptional()
   @IsString()
   description?: string;
 
   @IsOptional()
   @IsString()
-  status?: Task['status'];
-}
+  name?: string;
 
+  @IsOptional()
+  @IsString()
+  status?: Task['status'];
+
+  @IsString()
+  taskId!: string;
+}
