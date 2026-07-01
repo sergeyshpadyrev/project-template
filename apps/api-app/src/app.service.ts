@@ -9,23 +9,23 @@ import { validateOrReject } from 'class-validator';
 @Injectable()
 export class AppService {
   private executor = createExecutor<ClientServerInterface>({
-    createProject: this.withValidation(CreateProjectInput,  (input) => this.database.createProject(input)),
-    createTask: this.withValidation(CreateTaskInput, (input) => this.database.createTask(input)),
-    deleteProject: this.withValidation(DeleteProjectInput, (input) => this.database.deleteProject(input)),
-    deleteTask: this.withValidation(DeleteTaskInput, (input) => this.database.deleteTask(input)),
+    createProject: this.withValidation(CreateProjectInput,  (input: CreateProjectInput) => this.database.createProject(input)),
+    createTask: this.withValidation(CreateTaskInput, (input: CreateTaskInput) => this.database.createTask(input)),
+    deleteProject: this.withValidation(DeleteProjectInput, (input: DeleteProjectInput) => this.database.deleteProject(input)),
+    deleteTask: this.withValidation(DeleteTaskInput, (input: DeleteTaskInput) => this.database.deleteTask(input)),
     getProjects:() => this.database.getProjects(),
-    getTasks: this.withValidation(GetTasksInput, (input) => this.database.getTasks(input)),
-    updateProject: this.withValidation(UpdateProjectInput, (input) => this.database.updateProject(input)),
-    updateTask: this.withValidation(UpdateTaskInput, (input) => this.database.updateTask(input)),
+    getTasks: this.withValidation(GetTasksInput, (input: GetTasksInput) => this.database.getTasks(input)),
+    updateProject: this.withValidation(UpdateProjectInput, (input: UpdateProjectInput) => this.database.updateProject(input)),
+    updateTask: this.withValidation(UpdateTaskInput, (input: UpdateTaskInput) => this.database.updateTask(input)),
   });
 
   constructor(private readonly database: DatabaseService) {}
 
-  private withValidation<  I extends Object, O>(inputClass: ClassConstructor<I>, handle: (i: I) => O) {
+  private withValidation<I, O>(inputClass: ClassConstructor<I>, handle: (i: I) => O) {
     return (input: I) => {
 
       try {
-        validateOrReject(plainToInstance(inputClass, input));
+        validateOrReject(plainToInstance(inputClass as any, input));
 
       } catch (error) {
         throw new Error("Validation not passed")
