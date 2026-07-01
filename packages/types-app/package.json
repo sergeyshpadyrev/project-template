@@ -1,5 +1,5 @@
 {
-  "name": "@repo/sdk-dashboard",
+  "name": "@repo/types-app",
   "version": "0.0.0",
   "private": true,
   "exports": {
@@ -13,17 +13,16 @@
     "check:lint:fix": "eslint . --fix",
     "check:types": "tsc --noEmit"
   },
-  "dependencies": {
-    "@repo/types": "*",
-    "@repo/types-dashboard": "*",
-    "@repo/utils-rpc": "*",
-    "typed-remote-procedure-call": "^2.1.1"
-  },
   "devDependencies": {
     "@repo/config-eslint": "*",
     "@repo/config-typescript": "*",
+    "@repo/types": "*",
     "@types/node": "^22.15.3",
     "eslint": "^9.39.1",
     "typescript": "5.9.2"
+  },
+  "dependencies": {
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.15.1"
   }
 }

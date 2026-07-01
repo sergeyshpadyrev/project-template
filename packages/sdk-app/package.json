@@ -1,5 +1,5 @@
 {
-  "name": "@repo/core-sdk",
+  "name": "@repo/sdk-app",
   "version": "0.0.0",
   "private": true,
   "exports": {
@@ -14,7 +14,7 @@
     "check:types": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/core-types": "*",
+    "@repo/types-app": "*",
     "@repo/utils-rpc": "*",
     "typed-remote-procedure-call": "^2.1.1"
   },

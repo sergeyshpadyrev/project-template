@@ -1,7 +1,7 @@
-import { ClientServerInterface } from '@repo/core-types';
+import { AppClientServerInterface } from '@repo/types-app';
 import { createRPC, ExecutionRequest, ExecutionResponse } from '@repo/utils-rpc';
 
-const rpc = createRPC<ClientServerInterface>({
+const rpc = createRPC<AppClientServerInterface>({
   send: async (request: ExecutionRequest) => {
     const response = await fetch('http://localhost:4001/rpc', {
       body: JSON.stringify({ request }),
