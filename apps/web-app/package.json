@@ -14,8 +14,8 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "@repo/core-sdk-react": "*",
-    "@repo/core-types": "*",
+    "@repo/sdk-app-react": "*",
+    "@repo/types-app": "*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },

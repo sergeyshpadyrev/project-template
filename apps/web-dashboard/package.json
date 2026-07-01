@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@repo/sdk-app-react": "*",
-    "@repo/types": "*",
+    "@repo/types-dashboard": "*",
     "react": "^19.2.0",
     "react-dom": "^19.2.0"
   },
