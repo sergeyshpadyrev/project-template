@@ -1,8 +1,8 @@
 const ports = {
-  apiApp: 3000,
-  apiDashboard: 3001,
-  webApp: 4001,
-  webDashboard: 4002
+    appApi: 3000,
+    appWeb: 3001,
+    dashboardApi: 4000,
+    dashboardWeb: 4001,
 };
 
 export default ports;

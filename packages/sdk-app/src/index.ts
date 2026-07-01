@@ -4,7 +4,7 @@ import { createRPC, ExecutionRequest, ExecutionResponse } from '@repo/utils-rpc'
 
 const rpc = createRPC<AppClientServerInterface>({
   send: async (request: ExecutionRequest) => {
-    const response = await fetch(`http://localhost:${ports.apiApp}/rpc`, {
+    const response = await fetch(`http://localhost:${ports.appApi}/rpc`, {
       body: JSON.stringify({ request }),
       headers: {
         'Content-Type': 'application/json',

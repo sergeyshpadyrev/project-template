@@ -4,7 +4,7 @@ import { createRPC, ExecutionRequest, ExecutionResponse } from '@repo/utils-rpc'
 
 const rpc = createRPC<DashboardClientServerInterface>({
   send: async (request: ExecutionRequest) => {
-    const response = await fetch(`http://localhost:${ports.apiDashboard}/rpc`, {
+    const response = await fetch(`http://localhost:${ports.dashboardApi}/rpc`, {
       body: JSON.stringify({ request }),
       headers: {
         'Content-Type': 'application/json',
