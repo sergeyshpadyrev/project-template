@@ -14,8 +14,8 @@
     "check:types": "tsc --noEmit"
   },
   "dependencies": {
-    "@repo/core-sdk": "*",
-    "@repo/core-types": "*",
+    "@repo/sdk-dashboard": "*",
+    "@repo/types-dashboard": "*",
     "@tanstack/react-query": "^5.101.0"
   },
   "peerDependencies": {
