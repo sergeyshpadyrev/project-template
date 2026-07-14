@@ -16,6 +16,7 @@ Deployed to npm
 
 ## Plans
 
+- Add check:unused with `knip`
 - Add all clients
 - Add template-api
 - Add template-web
