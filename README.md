@@ -16,7 +16,7 @@ Deployed to npm
 
 ## Plans
 
-- Add check:unused with `knip`
+- Move to default rcs and rpc
 - Add all clients
 - Add template-api
 - Add template-web
@@ -28,3 +28,5 @@ Deployed to npm
 - Deploy apps
 - Deploy npm package
 - Add docs app
+- Add check:unused with `knip`
+- Add tests
