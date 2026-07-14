@@ -28,5 +28,5 @@ Deployed to npm
 - Deploy apps
 - Deploy npm package
 - Add docs app
-- Add check:unused with `knip`
+- Add check:unused with `depcheck`
 - Add tests
