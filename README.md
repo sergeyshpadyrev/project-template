@@ -25,8 +25,6 @@ Deployed to npm
 - Add CI/CD
 - Add multiconfig for all environments
 - Add libs/config-env
-- Deploy apps
-- Deploy npm package
 - Add docs app
 - Add check:unused with `depcheck`
 - Add tests
