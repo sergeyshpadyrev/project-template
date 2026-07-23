@@ -6,14 +6,14 @@ import { queryKeys } from './queryKeys';
 
 const useProjects = () =>
   useQuery({
-    queryFn: () => rpc.call.getProjects(),
+    queryFn: () => rpc.getProjects(),
     queryKey: queryKeys.projects,
   });
 
 const useCreateProject = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: CreateProjectInput) => rpc.call.createProject(input),
+    mutationFn: (input: CreateProjectInput) => rpc.createProject(input),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.projects }),
   });
 };
@@ -21,7 +21,7 @@ const useCreateProject = () => {
 const useUpdateProject = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: UpdateProjectInput) => rpc.call.updateProject(input),
+    mutationFn: (input: UpdateProjectInput) => rpc.updateProject(input),
     onSuccess: () => queryClient.invalidateQueries({ queryKey: queryKeys.projects }),
   });
 };
@@ -29,7 +29,7 @@ const useUpdateProject = () => {
 const useDeleteProject = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: DeleteProjectInput) => rpc.call.deleteProject(input),
+    mutationFn: (input: DeleteProjectInput) => rpc.deleteProject(input),
     onSuccess: (_data, { projectId }) => {
       queryClient.removeQueries({
         queryKey: queryKeys.projectTasks(projectId),

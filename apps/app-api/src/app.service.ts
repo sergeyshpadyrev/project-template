@@ -9,7 +9,7 @@ import {
   UpdateProjectInput,
   UpdateTaskInput,
 } from '@repo/types-app';
-import { createExecutor, ExecutionRequest, ExecutionResponse } from '@repo/utils-rpc';
+import { createExecutor, ExecutionRequest, ExecutionResponse } from 'typed-remote-procedure-call';
 import { ClassConstructor, plainToInstance } from 'class-transformer';
 import { validateOrReject } from 'class-validator';
 

@@ -1,6 +1,6 @@
 import ports from '@repo/config-ports';
 import { AppClientServerInterface } from '@repo/types-app';
-import { createRPC, ExecutionRequest, ExecutionResponse } from '@repo/utils-rpc';
+import { createRPC, ExecutionRequest, ExecutionResponse } from 'typed-remote-procedure-call';
 
 const rpc = createRPC<AppClientServerInterface>({
   send: async (request: ExecutionRequest) => {

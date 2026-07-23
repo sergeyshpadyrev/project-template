@@ -6,14 +6,14 @@ import { queryKeys } from './queryKeys';
 
 const useTasks = (projectId: string) =>
   useQuery({
-    queryFn: () => rpc.call.getTasks({ projectId }),
+    queryFn: () => rpc.getTasks({ projectId }),
     queryKey: queryKeys.projectTasks(projectId),
   });
 
 const useCreateTask = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: CreateTaskInput) => rpc.call.createTask(input),
+    mutationFn: (input: CreateTaskInput) => rpc.createTask(input),
     onSuccess: (_task, { projectId }) =>
       Promise.all([
         queryClient.invalidateQueries({
@@ -27,7 +27,7 @@ const useCreateTask = () => {
 const useUpdateTask = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: UpdateTaskInput) => rpc.call.updateTask(input),
+    mutationFn: (input: UpdateTaskInput) => rpc.updateTask(input),
     onSuccess: () =>
       Promise.all([
         queryClient.invalidateQueries({ queryKey: queryKeys.tasks }),
@@ -39,7 +39,7 @@ const useUpdateTask = () => {
 const useDeleteTask = () => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (input: DeleteTaskInput) => rpc.call.deleteTask(input),
+    mutationFn: (input: DeleteTaskInput) => rpc.deleteTask(input),
     onSuccess: () =>
       Promise.all([
         queryClient.invalidateQueries({ queryKey: queryKeys.tasks }),

@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { DashboardClientServerInterface } from '@repo/types-dashboard';
 import { GetUserProjectsInput } from '@repo/types-dashboard/dto/getUserProjects';
-import { createExecutor, ExecutionRequest, ExecutionResponse } from '@repo/utils-rpc';
+import { createExecutor, ExecutionRequest, ExecutionResponse } from 'typed-remote-procedure-call';
 import { ClassConstructor, plainToInstance } from 'class-transformer';
 import { validateOrReject } from 'class-validator';
 

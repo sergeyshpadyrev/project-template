@@ -5,13 +5,13 @@ import { queryKeys } from './queryKeys';
 
 const useUsers = () =>
   useQuery({
-    queryFn: () => rpc.call.getUsers(),
+    queryFn: () => rpc.getUsers(),
     queryKey: queryKeys.users,
   });
 
 const useUserProjects = (userId: string) =>
   useQuery({
-    queryFn: () => rpc.call.getUserProjects({ userId }),
+    queryFn: () => rpc.getUserProjects({ userId }),
     queryKey: queryKeys.userProjects(userId),
   });
 
