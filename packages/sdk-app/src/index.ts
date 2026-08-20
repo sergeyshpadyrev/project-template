@@ -4,7 +4,7 @@ import { createRPC, ExecutionRequest, ExecutionResponse } from 'typed-remote-pro
 
 const rpc = createRPC<AppClientServerInterface>({
   send: async (request: ExecutionRequest) => {
-    const response = await fetch(`http://localhost:${ports.appApi}/rpc`, {
+    const response = await fetch(`http://localhost:${ports.appCore}/rpc`, {
       body: JSON.stringify({ request }),
       headers: {
         'Content-Type': 'application/json',
