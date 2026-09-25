@@ -18,7 +18,10 @@
     "@repo/config-typescript": "*",
     "@types/node": "^22.15.3",
     "eslint": "^9.39.1",
+    "prisma": "^6.19.3",
     "typescript": "5.9.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@prisma/client": "^6.19.3"
+  }
 }
