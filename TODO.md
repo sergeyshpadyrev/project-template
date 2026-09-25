@@ -4,6 +4,7 @@
 - [ ] Add Prisma packages database
 - [ ] Move core to Prisma
 - [ ] Add cli apps
+- [ ] Add desktop-app and desktop-dashboard with Electron
 - [ ] Add React Native apps
 - [ ] Add auth-app and auth-dashboard packages
 - [ ] Make auth work throughout the app
