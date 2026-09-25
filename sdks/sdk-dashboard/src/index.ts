@@ -4,7 +4,7 @@ import { createRPC, ExecutionRequest, ExecutionResponse } from 'typed-remote-pro
 
 const rpc = createRPC<DashboardClientServerInterface>({
   send: async (request: ExecutionRequest) => {
-    const response = await fetch(`http://localhost:${ports.dashboardCore}/rpc`, {
+    const response = await fetch(`http://localhost:${ports.coreDashboard}/rpc`, {
       body: JSON.stringify({ request }),
       headers: {
         'Content-Type': 'application/json',

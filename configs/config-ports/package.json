@@ -3,7 +3,7 @@
     "version": "0.0.0",
     "private": true,
     "exports": {
-        ".": "./index.ts"
+        ".": "./index.js"
     },
     "scripts": {
         "check:format": "prettier --check \"**/*.{ts,tsx,js,jsx,mjs,cjs,json,md}\"",
