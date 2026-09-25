@@ -2,9 +2,46 @@
 
 ## Architecture
 
-SDK connects clients to the core.
+### SDK domain type dependencies
 
-### Clients-to-SDK connections
+SDK depends on its domain types that depend on common types.
+
+```mermaid
+graph TD
+    sdk-app
+    sdk-app-react
+    sdk-dashboard
+    sdk-dashboard-react
+
+    sdk-app --> types-app
+    sdk-dashboard --> types-dashboard
+    sdk-app-react --> sdk-app
+    sdk-dashboard-react --> sdk-dashboard
+    types-app --> types
+    types-dashboard --> types
+```
+
+### SDK-to-core connections
+
+SDK calls core domain APIs that share the access to database.
+
+```mermaid
+graph TD
+    core-app
+    core-dashboard
+    database-postgres
+    sdk-app
+    sdk-dashboard
+
+    core-app --> database-postgres
+    core-dashboard --> database-postgres
+    sdk-app -->|calls| core-app
+    sdk-dashboard -->|calls| core-dashboard
+```
+
+### Client-to-SDK connections
+
+Client calls the SDK of its specific domain.
 
 ```mermaid
 graph TD
@@ -22,7 +59,6 @@ graph TD
     mobile-app --> sdk-app-react
     web-app --> sdk-app-react
     sdk-app-react --> sdk-app
-
 ```
 
 ```mermaid
@@ -41,38 +77,4 @@ graph TD
     mobile-dashboard --> sdk-dashboard-react
     web-dashboard --> sdk-dashboard-react
     sdk-dashboard-react --> sdk-dashboard
-
-```
-
-### SDKs-to-core connections
-
-```mermaid
-graph TD
-    core-app
-    core-dashboard
-    database-postgres
-    sdk-app
-    sdk-dashboard
-
-    core-app --> database-postgres
-    core-dashboard --> database-postgres
-    sdk-app -->|calls| core-app
-    sdk-dashboard -->|calls| core-dashboard
-```
-
-### SDK type dependencies
-
-```mermaid
-graph TD
-    sdk-app
-    sdk-app-react
-    sdk-dashboard
-    sdk-dashboard-react
-
-    sdk-app --> types-app
-    sdk-dashboard --> types-dashboard
-    sdk-app-react --> sdk-app
-    sdk-dashboard-react --> sdk-dashboard
-    types-app --> types
-    types-dashboard --> types
 ```
