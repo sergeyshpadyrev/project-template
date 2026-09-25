@@ -1,5 +1,5 @@
 {
-  "name": "app-web",
+  "name": "web-app",
   "version": "0.0.0",
   "type": "module",
   "private": true,

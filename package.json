@@ -1,30 +1,29 @@
 {
-  "name": "project-template",
-  "private": true,
-  "scripts": {
-    "build": "turbo run build",
-    "check:format": "turbo run check:format",
-    "check:format:fix": "turbo run check:format:fix",
-    "check:lint": "turbo run check:lint",
-    "check:lint:fix": "turbo run check:lint:fix",
-    "check:types": "turbo run check:types",
-    "dev": "turbo run dev"
-  },
-  "dependencies": {
-    "typed-remote-procedure-call": "3.0.1"
-  },
-  "devDependencies": {
-    "prettier": "^3.8.3",
-    "turbo": "^2.9.16",
-    "typescript": "5.9.2"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "npm@10.9.2",
-  "workspaces": [
-    "clients/*",
-    "core/*",
-    "packages/*"
-  ]
+    "name": "project-template",
+    "private": true,
+    "scripts": {
+        "build": "turbo run build",
+        "check:format": "turbo run check:format",
+        "check:format:fix": "turbo run check:format:fix",
+        "check:lint": "turbo run check:lint",
+        "check:lint:fix": "turbo run check:lint:fix",
+        "check:types": "turbo run check:types",
+        "dev": "turbo run dev"
+    },
+    "dependencies": {
+        "typed-remote-procedure-call": "3.0.1"
+    },
+    "devDependencies": {
+        "prettier": "^3.8.3",
+        "turbo": "^2.9.16",
+        "typescript": "5.9.2"
+    },
+    "engines": {
+        "node": ">=18"
+    },
+    "packageManager": "npm@10.9.2",
+    "workspaces": [
+        "apps/*",
+        "packages/*"
+    ]
 }
