@@ -1,0 +1,5 @@
+- [ ] Add cli apps
+- [ ] Add React Native apps
+- [ ] Add Dockerfile with PostgreSQL
+- [ ] Add Prisma packages database
+- [ ] Move core to Prisma

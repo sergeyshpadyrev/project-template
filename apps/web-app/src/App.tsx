@@ -1,4 +1,4 @@
-import sdk from '@repo/sdk-app-react';
+import sdk from '../../../packages/sdk-app-react/src';
 import { Task, TaskStatus } from '@repo/types';
 import { useState } from 'react';
 

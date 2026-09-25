@@ -1,4 +1,4 @@
-import sdk from '@repo/sdk-dashboard-react';
+import sdk from '../../../packages/sdk-dashboard-react/src';
 import { useState } from 'react';
 
 const UserProjects = ({ userId }: { userId: string }) => {
